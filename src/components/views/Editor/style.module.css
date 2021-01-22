@@ -1,0 +1,38 @@
+.editor {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+  flex-direction: column;
+  overflow: hidden;
+  height: calc(100% - 1rem);
+  padding: .5rem;
+}
+
+.editor-title {
+  background-color: #212121;
+  color: #fff;
+  padding: 3px 10px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.editor > hr {
+  border-color: #3c3e42;
+}
+
+.html-editor {
+}
+.css-editor {
+}
+.js-editor {
+}
+
+.CodeMirror {
+  height: 100% !important;
+}
+
+.code-mirror-wrapper {
+  flex-grow: 1;
+  overflow: hidden;
+  height: 100% !important;
+}
