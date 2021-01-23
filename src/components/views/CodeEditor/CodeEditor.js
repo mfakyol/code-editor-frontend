@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Editor from "../Editor/Editor";
-import Result from "../Result/Result";
+import Output from "../Output/Output";
 import classes from "./style.module.css";
 
 export default function CodeEditor() {
+  const [offset, setOffSet] = useState(0);
+  const [height, setHeight] = useState(null);
+
   const [template, setTemplate] = useState("");
   const [style, setStyle] = useState("");
   const [script, setScript] = useState("");
@@ -30,9 +33,30 @@ export default function CodeEditor() {
     return () => clearTimeout(timeout);
   }, [template, style, script]);
 
+  function dragStart(e) {
+    
+    document.addEventListener("mouseover", drag, true);
+    setOffSet(e.target.previousSibling.getBoundingClientRect().bottom - e.pageY);
+  }
+
+  document.addEventListener('mouseup', () => {
+    document.removeEventListener("mouseover", drag, true);
+  })
+
+  function dragEnd(e) {
+    document.removeEventListener("mouseover", drag, true);
+  }
+
+   function drag(e) {
+     console.log(e)
+      if(e.clientY> 200)
+      setHeight(e.pageY)
+
+  }
+
   return (
     <>
-      <div className={classes["editors"]}>
+      <div style={{height: height ? height : null}} id="editors" className={classes["editors"]}>
         <Editor
           mode={templateMode}
           title="HTML"
@@ -57,8 +81,16 @@ export default function CodeEditor() {
           value={script}
           onBeforeChange={setScript}
         />
+        <div className={classes["break"]}></div>
       </div>
-      <Result srcDoc={srcDoc} />
+      <div
+        onMouseDown={dragStart}
+        onMouseUp={dragEnd}
+        className={classes["resizer"]}
+      >
+      <i className="fas fa-grip-lines"></i>
+      </div>
+      <Output srcDoc={srcDoc} />
     </>
   );
 }

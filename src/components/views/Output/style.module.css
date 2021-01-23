@@ -1,0 +1,17 @@
+.output {
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.output > iframe {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+
+iframe  html,  body {
+  padding: 0;
+  margin: 0;
+}

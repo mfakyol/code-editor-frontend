@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Main from "../components/layouts/Main";
-import CodeEditor from "../components/views/CodeEditor/CodeEditor";
+import PrivateHome from "../components/views/PrivateHome/PrivateHome";
 
 export default () => {
   return (
@@ -11,7 +11,7 @@ export default () => {
         <Route path="" /* <----- admin/:path? */>  
           <Main>
             <Switch>
-              <Route path="/" exact component={CodeEditor} />
+              <Route path="/" exact component={PrivateHome} />
             </Switch>
           </Main>
         </Route>

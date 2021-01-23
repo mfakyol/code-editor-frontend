@@ -4,16 +4,32 @@
   flex-basis: 0;
   flex-direction: column;
   overflow: hidden;
-  height: calc(100% - 1rem);
+  height: 100%;
   padding: .5rem;
+}
+.editor-header {
+  background-color: #212121;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .editor-title {
-  background-color: #212121;
+  display: inline-block;
   color: #fff;
   padding: 3px 10px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
+}
+
+.editor-header-options {
+  color: #fff;
+}
+
+.editor-header-options > i {
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 .editor > hr {
@@ -21,14 +37,11 @@
 }
 
 .html-editor {
+  
 }
 .css-editor {
 }
 .js-editor {
-}
-
-.CodeMirror {
-  height: 100% !important;
 }
 
 .code-mirror-wrapper {

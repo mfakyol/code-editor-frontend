@@ -1,16 +1,65 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .CodeMirror {
-    min-height: 100% !important;
+  min-height: 100% !important;
 }
-
 
 .code-mirror-wrapper {
-    flex-grow: 1;
-    overflow: hidden;
+  flex-grow: 1;
+  overflow: hidden;
 }
 
+.CodeMirror {
+  height: 100% !important;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+/* width */
+.CodeMirror-vscrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+.CodeMirror-vscrollbar::-webkit-scrollbar-track {
+  background: #212121;
+}
+
+/* Handle */
+.CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
+  background: #464444;
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+.CodeMirror-vscrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+
+
+/* width */
+.CodeMirror-hscrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+
+/* Track */
+.CodeMirror-hscrollbar::-webkit-scrollbar-track {
+  background: #212121;
+}
+
+/* Handle */
+.CodeMirror-hscrollbar::-webkit-scrollbar-thumb {
+  background: #464444;
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+.CodeMirror-hscrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

@@ -3,9 +3,9 @@ import classes from "./style.module.css";
 
 export default function Result({srcDoc}) {
   return (
-    <div className={classes["result"]}>
+    <div className={classes["output"]}>
       <iframe
-        title="result"
+        title="output"
         sandbox="allow-scripts"
         frameBorder="0"
         width="100%"
