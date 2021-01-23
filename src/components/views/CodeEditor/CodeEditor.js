@@ -49,8 +49,13 @@ export default function CodeEditor() {
 
    function drag(e) {
      console.log(e)
-      if(e.clientY> 200)
-      setHeight(e.pageY)
+      if(e.pageY> 200){
+
+        setHeight(e.pageY)
+      }
+      else {
+        setHeight(200)
+      }
 
   }
 
