@@ -11,6 +11,8 @@
 .code-mirror-wrapper {
   flex-grow: 1;
   overflow: hidden;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .CodeMirror {
@@ -39,9 +41,6 @@
 .CodeMirror-vscrollbar::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-
-
-
 
 /* width */
 .CodeMirror-hscrollbar::-webkit-scrollbar {

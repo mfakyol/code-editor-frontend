@@ -13,6 +13,9 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  overflow: hidden;
 }
 
 .editor-title {
@@ -21,6 +24,7 @@
   padding: 3px 10px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
+  text-transform: uppercase;
 }
 
 .editor-header-options {
