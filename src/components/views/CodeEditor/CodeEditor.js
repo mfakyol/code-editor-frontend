@@ -8,7 +8,7 @@ import CodeEditorSettings from "../CodeEditorSettings/CodeEditorSettings";
 export default function CodeEditor() {
   const [offset, setOffSet] = useState(0);
   const [height, setHeight] = useState(null);
-  const [settingsIsOpen, setSettingsIsOpen] = useState(true);
+  const [settingsIsOpen, setSettingsIsOpen] = useState(false);
 
   const [head, setHead] = useState("");
   const [template, setTemplate] = useState("");
