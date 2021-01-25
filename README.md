@@ -1,4 +1,6 @@
 
+## sitenin demosu https://code-editor-project.netlify.app/
+
 
 ### yapılacaklar
 #### head kısmı için meta, link ve script alanları eklenecek ve kullanıcı ayarlardan istediği script meta, link ve script i ekleyebilecek.(state olarak arrayde tutulacak her bir )
@@ -21,3 +23,4 @@
 #### css fix.
 #### ayalar menusü eklendi.
 #### template ayarı için için pug ve html sçenekleri eklendi.
+
