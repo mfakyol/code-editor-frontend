@@ -23,7 +23,12 @@
   padding: 3px 10px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  text-transform: uppercase;
+  text-transform: capitalize;
+}
+
+.editor-preprocessor {
+  font-weight: 400;
+  font-size: 13px;
 }
 
 .editor-header-options {

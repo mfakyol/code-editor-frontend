@@ -2,46 +2,72 @@ import React, { useState, useEffect } from "react";
 import Editor from "../Editor/Editor";
 import Output from "../Output/Output";
 import classes from "./style.module.css";
-import getTemplate from "../../../compilers/getTemplate";
+import sendCodeToCompile from "../../../compilers/sendCodeToCompile";
 import CodeEditorSettings from "../CodeEditorSettings/CodeEditorSettings";
 
 export default function CodeEditor() {
-  const [offset, setOffSet] = useState(0);
   const [height, setHeight] = useState(null);
   const [settingsIsOpen, setSettingsIsOpen] = useState(false);
+  const [menuTab, setMenuTab] = useState(0);
 
-  const [head, setHead] = useState("");
+  const [tags, setTags] = useState([]);
+  const [srcDoc, setSrcDoc] = useState("");
+
   const [template, setTemplate] = useState("");
   const [style, setStyle] = useState("");
   const [script, setScript] = useState("");
-  const [srcDoc, setSrcDoc] = useState("");
+
   const [templateMode, setTemplateMode] = useState("xml");
   const [styleMode, setStyleMode] = useState("css");
   const [scriptMode, setScriptMode] = useState("javascript");
 
+  const [templatePreprocessor, setTemplatePreprocessor] = useState("");
+  const [stylePreprocessor, setStylePreprocessor] = useState("");
+  const [scriptPreprocessor, setScriptPreprocessor] = useState("");
+
   useEffect(() => {
     // write compile func for all types
 
-    const timeout = setTimeout(() => {
+    const timeout = setTimeout(async () => {
       setSrcDoc(`
          <html>
            <head>
-            ${head}
+            ${tags.join("")}
            </head>
-           <body>${getTemplate(templateMode, template)}</body>
-           <style>${style}</style>
-           <script>${script}</script>
+           <body>${await sendCodeToCompile(
+             templateMode,
+             templatePreprocessor,
+             template
+           )}</body>
+           <style>${await sendCodeToCompile(
+             styleMode,
+             stylePreprocessor,
+             style
+           )}</style>
+           <script>${await sendCodeToCompile(
+             scriptMode,
+             scriptPreprocessor,
+             script
+           )}</script>
          </html>`);
     }, 1000);
 
     return () => clearTimeout(timeout);
-  }, [head, templateMode, template, style, script]);
+  }, [
+    tags,
+    templateMode,
+    scriptMode,
+    styleMode,
+    template,
+    style,
+    script,
+    templatePreprocessor,
+    stylePreprocessor,
+    scriptPreprocessor,
+  ]);
 
   function dragStart(e) {
     document.addEventListener("mouseover", drag, true);
-    setOffSet(
-      e.target.previousSibling.getBoundingClientRect().bottom - e.pageY
-    );
   }
 
   document.addEventListener("mouseup", () => {
@@ -53,11 +79,9 @@ export default function CodeEditor() {
   }
 
   function drag(e) {
-    console.log(e);
     if (e.pageY > 200) {
       setHeight(e.pageY);
     } else {
-      console.log();
       setHeight(200);
     }
   }
@@ -65,13 +89,23 @@ export default function CodeEditor() {
   return (
     <>
       <CodeEditorSettings
+        menuTab={menuTab}
+        setMenuTab={setMenuTab}
+        tags={tags}
+        setTags={setTags}
         settingsIsOpen={settingsIsOpen}
         setSettingsIsOpen={setSettingsIsOpen}
-        setHead={setHead}
-        template={template}
+        styleMode={styleMode}
+        scriptMode={scriptMode}
         setTemplateMode={setTemplateMode}
         setStyleMode={setStyleMode}
         setScriptMode={setScriptMode}
+        setTemplatePreprocessor={setTemplatePreprocessor}
+        setStylePreprocessor={setStylePreprocessor}
+        setScriptPreprocessor={setScriptPreprocessor}
+        templatePreprocessor={templatePreprocessor}
+        stylePreprocessor={stylePreprocessor}
+        scriptPreprocessor={scriptPreprocessor}
       />
       <div
         style={{ height: height ? height : null }}
@@ -79,27 +113,34 @@ export default function CodeEditor() {
         className={classes["editors"]}
       >
         <Editor
+          setMenuTab={setMenuTab}
           setSettingsIsOpen={setSettingsIsOpen}
           mode={templateMode}
           editorPrefix="html"
           value={template}
           onBeforeChange={setTemplate}
+          preProcessor={templatePreprocessor}
+          editorIndex={0}
         />
         <Editor
+          setMenuTab={setMenuTab}
           setSettingsIsOpen={setSettingsIsOpen}
           mode={styleMode}
-          title="CSS"
           editorPrefix="css"
           value={style}
           onBeforeChange={setStyle}
+          preProcessor={stylePreprocessor}
+          editorIndex={1}
         />
         <Editor
+          setMenuTab={setMenuTab}
           setSettingsIsOpen={setSettingsIsOpen}
           mode={scriptMode}
-          title="JS"
           editorPrefix="js"
           value={script}
           onBeforeChange={setScript}
+          preProcessor={scriptPreprocessor}
+          editorIndex={2}
         />
         <div className={classes["break"]}></div>
       </div>

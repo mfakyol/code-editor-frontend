@@ -24,3 +24,17 @@
 #### ayalar menusü eklendi.
 #### template ayarı için için pug ve html sçenekleri eklendi.
 
+
+
+sass desteği eklendi.
+babel desteği eklendi.
+pug backend kısmına eklendi.
+
+link script meta taglarını eklemek için bir alan oluşturuldu.
+backend babel 6 üzerine kuruluydu. typescript compiler babel 7 de çalışmakta. Babel 6 ve 7 beraber çalışmamakta tüm ğroje babel 7 ye yükseltildi.
+
+typescript desteği geldi.
+
+coffeescript desteği eklendi.
+
+less desteği eklendi.
