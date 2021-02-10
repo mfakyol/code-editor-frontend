@@ -38,16 +38,27 @@ export default function Header() {
         </div>
         <div className={classes["nav-items"]}>
           <NavLink
+            exact
             activeClassName={classes["active"]}
             to="/"
             className={classes["nav-item"]}
           >
             Home
           </NavLink>
-          <NavLink to="about" className={classes["nav-item"]}>
+          <NavLink
+            exact
+            activeClassName={classes["active"]}
+            to="about"
+            className={classes["nav-item"]}
+          >
             About Us
           </NavLink>
-          <NavLink to="/contact" className={classes["nav-item"]}>
+          <NavLink
+            exact
+            activeClassName={classes["active"]}
+            to="/contact"
+            className={classes["nav-item"]}
+          >
             Contact Us
           </NavLink>
         </div>
@@ -55,7 +66,7 @@ export default function Header() {
           <Link className={classes["login"]} to="/login">
             {"<Log In/>"}
           </Link>
-          <Link className={classes["signup"]} to="/sigup">
+          <Link className={classes["signup"]} to="/signup">
             {"<Sign Up/>"}
           </Link>
         </div>

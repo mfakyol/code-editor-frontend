@@ -4,13 +4,13 @@ import Axios from "axios";
 export default async (language, preProcessor, code) => {
   switch (language) {
     case "xml":
-      return code;
+      return {compiledCode: code};
     case "css":
-      return code;
+      return {compiledCode: code};
     case "javascript":
       if (code === "") return code;
       if (preProcessor === "babel") return fetchCompiledCode("babel", code);
-      return code;
+      return {compiledCode: code};
     case "typescript":
       return fetchCompiledCode("typescript", code);
     case "CoffeeScript":
@@ -26,6 +26,5 @@ async function fetchCompiledCode(endpoint, code) {
     code,
   })
     .then((res) => res.data)
-    .then((data) => data.compiledCode);
   return data;
 }
