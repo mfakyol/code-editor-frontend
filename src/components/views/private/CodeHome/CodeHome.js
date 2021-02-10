@@ -2,6 +2,7 @@ import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import classes from "./style.module.css";
 import config from "../../../../config";
+import { Link } from "react-router-dom";
 
 export default function CodeMode(props) {
   const [codes, setCodes] = useState([]);
@@ -66,7 +67,8 @@ export default function CodeMode(props) {
             <h3 title={code.title} className={classes["card-title"]}>
               {code.title}
             </h3>
-            <div className={classes["card-body"]}>
+          <Link to={`/code/${code._id}`}>
+          <div className={classes["card-body"]}>
               <p className={classes["code-type"]}>
                 <i className="fab fa-html5"></i>
                 <span>{setTempLateTitle(code.templateMode)}</span>
@@ -93,6 +95,7 @@ export default function CodeMode(props) {
                 {new Date(code.lastModifiedDate).toLocaleTimeString()}
               </p>
             </div>
+          </Link>
           </div>
         ))}
       </div>
