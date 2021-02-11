@@ -192,6 +192,7 @@ export default function CodeEditor(p) {
         setTags={setTags}
         settingsIsOpen={settingsIsOpen}
         setSettingsIsOpen={setSettingsIsOpen}
+        templateMode={templateMode}
         styleMode={styleMode}
         scriptMode={scriptMode}
         setTemplateMode={setTemplateMode}
