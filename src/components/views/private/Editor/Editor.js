@@ -35,7 +35,7 @@ export default function Editor(props) {
       case "javascript":
         return "js";
       case "typescript":
-        return "Typescript";
+        return "typescript";
       default:
         return mode;
     }
@@ -44,12 +44,13 @@ export default function Editor(props) {
   function setEditorMode(mode) {
     switch (mode) {
       case "less":
-        return "css"   
+        return "css";
+      case "typescript":
+        return "javascript";
       default:
         return mode;
     }
   }
-  
 
   function openSettings(tabNumber, e) {
     setMenuTab(tabNumber);

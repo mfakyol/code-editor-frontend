@@ -21,6 +21,9 @@
 }
 
 .card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 5px 10px;
   color: #fff;
   background-color: #212121;
@@ -28,6 +31,19 @@
   overflow: hidden;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+}
+
+.card-title > i {
+  color: #dd4b25;
+  transition: transform .76s ease-in-out, opacity .5s ease-in-out;
+  opacity: 0;
+  transform: translateY(-50px);
+  cursor: pointer;
+}
+
+.card:hover > .card-title > i {
+  opacity: 1;
+  transform: translateY(0px);
 }
 
 .card-body {

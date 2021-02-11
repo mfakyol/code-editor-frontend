@@ -23,9 +23,9 @@ export default function CodeEditor(p) {
   const [tags, setTags] = useState(p.tags);
   const [srcDoc, setSrcDoc] = useState("");
 
-  const [template, setTemplate] = useState(p.template);
-  const [style, setStyle] = useState(p.style);
-  const [script, setScript] = useState(p.script);
+  const [template, setTemplate] = useState(p.template || "");
+  const [style, setStyle] = useState(p.style || "");
+  const [script, setScript] = useState(p.script || "");
 
   const [templateMode, setTemplateMode] = useState(p.templateMode || "xml"); //xml
   const [styleMode, setStyleMode] = useState(p.styleMode || "css"); //css
@@ -48,12 +48,16 @@ export default function CodeEditor(p) {
       code
     );
     if (err) {
+      let log = {
+        type: "error",
+        date: new Date(Date.now()),
+        content: err.toString(),
+      };
       setLogs((prevState) => [
-        ...prevState,
-        { date: new Date(Date.now()), content: err, type: "error" },
+        ...prevState,log
       ]);
     }
-    return compiledCode;
+    return compiledCode || "";
   }
 
   useEffect(() => {
@@ -178,7 +182,6 @@ export default function CodeEditor(p) {
 
   window.addEventListener("resize", () => {
     if (window.innerHeight - 160 < height) {
-      
       setHeight(window.innerHeight - 160);
     }
   });
