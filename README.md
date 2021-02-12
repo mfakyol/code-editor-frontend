@@ -1,4 +1,10 @@
 
+##Çalıştırmak için
+ilnk önce arka uç kısmının(https://github.com/mfakyol/code-editor-backend) çalıştırılması ardından projenin ana dizininde 
+# -> npm install
+# -> npm start
+
+
 ## sitenin demosu https://code-editor-project.netlify.app/
 
 
