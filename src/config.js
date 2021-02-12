@@ -1,3 +1,3 @@
 export default  {
-    apiDomain: "https://code-editor-backend.herokuapp.com/api/v1"
+    apiDomain: "http://localhost:3001/api/v1"
 }
